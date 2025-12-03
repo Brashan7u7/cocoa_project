@@ -1,0 +1,74 @@
+{
+  "categorias": [
+    {
+      "id": "criar_lechones",
+      "titulo": "Criar Lechones",
+      "descripcion": "Desde el nacimiento hasta los 60 días",
+      "etapas": [
+        {
+          "id": "fase_1_lactancia",
+          "titulo": "Fase I - Lactancia",
+          "rango_edad_dias": "7 - 21 días",
+          "imagen_ref": "img_cerdito_fase1.png",
+          "producto_recomendado": {
+            "nombre": "Bio Start Pre-Iniciador",
+            "descripcion": "Alta digestibilidad para lechones en lactancia.",
+            "presentacion_kg": 25,
+            "precio_bulto": 850.00,
+            "consumo_total_fase_kg": 3.5,
+            "nota_tecnica": "Consumo estimado por lechón durante los 14 días de esta fase."
+          }
+        },
+        {
+          "id": "fase_2_destete",
+          "titulo": "Fase II - Destetados",
+          "rango_edad_dias": "21 - 28 días",
+          "imagen_ref": "img_cerdito_fase2.png",
+          "producto_recomendado": {
+            "nombre": "Bio Nova 2",
+            "descripcion": "Fórmula especial para reducir el estrés del destete.",
+            "presentacion_kg": 40,
+            "precio_bulto": 1200.00,
+            "consumo_total_fase_kg": 5.0,
+            "nota_tecnica": "Consumo para la primera semana post-destete."
+          }
+        },
+        {
+          "id": "fase_3_transicion",
+          "titulo": "Fase III - Transición",
+          "rango_edad_dias": "42 - 60 días",
+          "imagen_ref": "img_cerdito_fase3.png",
+          "producto_recomendado": {
+            "nombre": "Bio Growth Plus",
+            "descripcion": "Máximo desarrollo de estructura ósea.",
+            "presentacion_kg": 40,
+            "precio_bulto": 1100.00,
+            "consumo_total_fase_kg": 18.0,
+            "nota_tecnica": "Preparación para la etapa de engorda."
+          }
+        }
+      ]
+    },
+    {
+      "id": "engorda_cerdos",
+      "titulo": "Engordar Cerdos",
+      "descripcion": "A partir de 60 días o 30kg de peso",
+      "etapas": [
+        {
+          "id": "engorda_inicio",
+          "titulo": "Inicio de Engorda",
+          "rango_peso": "30kg - 60kg",
+          "imagen_ref": "img_cerdo_engorda1.png",
+          "producto_recomendado": {
+            "nombre": "Maxi Engorda A",
+            "descripcion": "Conversión alimenticia acelerada.",
+            "presentacion_kg": 40,
+            "precio_bulto": 950.00,
+            "consumo_total_fase_kg": 65.0,
+            "nota_tecnica": "Consumo total estimado para ganar 30kg de peso."
+          }
+        }
+      ]
+    }
+  ]
+}
