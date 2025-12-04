@@ -1,6 +1,18 @@
-import React from "react";
-import { Stack } from "expo-router";
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import '../global.css';
 
-export default function Layout() {
-  return <Stack />;
+export default function RootLayout() {
+  return (
+    <>
+      <StatusBar style="dark" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          animation: 'slide_from_right',
+          contentStyle: { backgroundColor: '#F9FAFB' },
+        }}
+      />
+    </>
+  );
 }
