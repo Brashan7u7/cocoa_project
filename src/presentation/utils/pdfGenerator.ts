@@ -1,8 +1,13 @@
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
-import { CotizacionResult } from '../../domain/usecases/CalcularCotizacionUseCase';
+import { CotizacionResult } from '../../domain/services/FlowEngine';
 
-export const generateCotizacionPDF = async (cotizacion: CotizacionResult, categoriaTitle: string, etapaTitle: string) => {
+export const generateCotizacionPDF = async (
+  cotizacion: CotizacionResult,
+  flujoTitle: string,
+  faseTitle: string,
+  labelUnidades: string = 'Animales'
+) => {
   const currentDate = new Date().toLocaleDateString('es-MX', {
     weekday: 'long',
     year: 'numeric',
@@ -10,6 +15,7 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
     day: 'numeric',
   });
 
+  const cantidadUnidades = cotizacion.cantidadAnimales;
 
   const logoSvg = `
     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,9 +33,9 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
       <title>Cotización - ${cotizacion.producto.nombre}</title>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
           font-family: 'Inter', -apple-system, Helvetica, Arial, sans-serif;
           color: #111827;
@@ -79,7 +85,7 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
           align-items: center;
           gap: 8px;
         }
-        
+
         .section-title::after {
           content: '';
           flex: 1;
@@ -114,10 +120,10 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
           justify-content: space-between;
           align-items: flex-start;
         }
-        
+
         .hero-info h2 { font-size: 24px; margin-bottom: 8px; font-weight: 800; }
         .hero-info p { font-size: 14px; opacity: 0.8; max-width: 400px; }
-        
+
         .hero-price { text-align: right; }
         .hero-price .price-label { font-size: 12px; opacity: 0.7; text-transform: uppercase; }
         .hero-price .price-val { font-size: 28px; font-weight: 700; color: #4ade80; }
@@ -146,7 +152,7 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
           margin-bottom: 12px;
           font-size: 14px;
         }
-        
+
         .summary-row.final {
           margin-top: 16px;
           padding-top: 16px;
@@ -181,7 +187,7 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
     </head>
     <body>
       <div class="container">
-        
+
         <div class="header">
           <div class="brand">
             ${logoSvg}
@@ -199,16 +205,17 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
         <div class="section-title">Detalles del Proyecto</div>
         <div class="grid-3">
           <div class="card">
-            <div class="label">Categoría</div>
-            <div class="value">${categoriaTitle}</div>
+            <div class="label">Flujo</div>
+            <div class="value">${flujoTitle}</div>
           </div>
           <div class="card">
-            <div class="label">Etapa Productiva</div>
-            <div class="value">${etapaTitle}</div>
+            <div class="label">Fase</div>
+            <div class="value">${faseTitle}</div>
           </div>
           <div class="card">
             <div class="label">Población</div>
-            <div class="value highlight">${cotizacion.cantidadCerdos} Cerdos</div>
+            <!-- ========== ACTUALIZADO: Usar cantidadUnidades ========== -->
+            <div class="value highlight">${cantidadUnidades} ${labelUnidades}</div>
           </div>
         </div>
 
@@ -228,38 +235,38 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
           <thead>
             <tr>
               <th width="30%">Presentación</th>
-              <th width="30%">Consumo por Animal</th>
-              <th width="40%">Rendimiento Esperado</th>
+              <th width="30%">Consumo por Unidad</th>
+              <th width="40%">Plan Alimenticio</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>${cotizacion.producto.presentacionKg} kg / bulto</td>
-              <td>${cotizacion.producto.consumoTotalFaseKg} kg</td>
-              <td>Etapa completa</td>
+              <td>${cotizacion.plan?.consumoPorAnimalKg || '-'} kg</td>
+              <td>${cotizacion.plan?.nombre || 'N/A'}</td>
             </tr>
           </tbody>
         </table>
 
         <div class="total-section">
           <div class="section-title" style="color:#9f1239; border-color:#fda4af;">Desglose de Costos</div>
-          
+
           <div class="grid-2">
             <div>
               <div class="summary-row">
                 <span style="color:#6b7280;">Requerimiento total de alimento</span>
-                <strong>${cotizacion.kilogramosNecesarios.toFixed(1)} kg</strong>
+                <strong>${cotizacion.consumoTotalKg.toFixed(1)} kg</strong>
               </div>
               <div class="summary-row">
                 <span style="color:#6b7280;">Total bultos requeridos</span>
                 <strong>${cotizacion.bultosNecesarios} pzas</strong>
               </div>
               <div class="summary-row">
-                <span style="color:#6b7280;">Inversión por cerdo</span>
-                <strong>$${cotizacion.costoPorCerdo.toFixed(2)}</strong>
+                <span style="color:#6b7280;">Inversión por unidad</span>
+                <strong>$${cotizacion.costoPorAnimal.toFixed(2)}</strong>
               </div>
             </div>
-            
+
             <div style="text-align: right;">
               <div class="total-label">Presupuesto Total Estimado</div>
               <div class="total-amount">$${cotizacion.costoTotal.toFixed(2)}</div>
@@ -269,7 +276,7 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
         </div>
 
         <div class="technical-note">
-          <strong>Nota Técnica:</strong> ${cotizacion.producto.notaTecnica}
+          <strong>Nota Técnica:</strong> ${cotizacion.plan?.descripcion || 'Consulte a su distribuidor para recomendaciones específicas de alimentación.'}
         </div>
 
         <div class="footer">
@@ -284,10 +291,10 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
 
   try {
     const { uri } = await Print.printToFileAsync({ html });
-    
+
 
     const isAvailable = await Sharing.isAvailableAsync();
-    
+
     if (isAvailable) {
       await Sharing.shareAsync(uri, {
         mimeType: 'application/pdf',
@@ -296,9 +303,9 @@ export const generateCotizacionPDF = async (cotizacion: CotizacionResult, catego
       });
     } else {
       console.log("Sharing no soportado en este dispositivo");
-      
+
     }
-    
+
     return { success: true, uri };
   } catch (error) {
     console.error('Error generando PDF:', error);

@@ -1,23 +1,15 @@
-
-import { LocalDataSource } from '../data/datasources/LocalDataSource';
-import { CategoriaRepositoryImpl } from '../data/repositories/CategoriaRepositoryImpl';
-import { GetCategoriasUseCase } from '../domain/usecases/GetCategoriasUseCase';
-import { GetCategoriaByIdUseCase } from '../domain/usecases/GetCategoriaByIdUseCase';
-import { CalcularCotizacionUseCase } from '../domain/usecases/CalcularCotizacionUseCase';
+import { LocalDataSource } from "../data/datasources/LocalDataSource";
+import { FlujoRepositoryImpl } from "../data/repositories/FlujoRepositoryImpl";
+import { AccesorioRepositoryImpl } from "../data/repositories/AccesorioRepositoryImpl";
+import { ProductoRepositoryImpl } from "../data/repositories/ProductoRepositoryImpl";
 
 class DIContainer {
   private static instance: DIContainer;
 
-
   private _localDataSource?: LocalDataSource;
-
-
-  private _categoriaRepository?: CategoriaRepositoryImpl;
-
-
-  private _getCategoriasUseCase?: GetCategoriasUseCase;
-  private _getCategoriaByIdUseCase?: GetCategoriaByIdUseCase;
-  private _calcularCotizacionUseCase?: CalcularCotizacionUseCase;
+  private _flujoRepository?: FlujoRepositoryImpl;
+  private _accesorioRepository?: AccesorioRepositoryImpl;
+  private _productoRepository?: ProductoRepositoryImpl;
 
   private constructor() {}
 
@@ -28,7 +20,6 @@ class DIContainer {
     return DIContainer.instance;
   }
 
-
   get localDataSource(): LocalDataSource {
     if (!this._localDataSource) {
       this._localDataSource = new LocalDataSource();
@@ -36,34 +27,29 @@ class DIContainer {
     return this._localDataSource;
   }
 
-
-  get categoriaRepository(): CategoriaRepositoryImpl {
-    if (!this._categoriaRepository) {
-      this._categoriaRepository = new CategoriaRepositoryImpl(this.localDataSource);
+  get flujoRepository(): FlujoRepositoryImpl {
+    if (!this._flujoRepository) {
+      this._flujoRepository = new FlujoRepositoryImpl(this.localDataSource);
     }
-    return this._categoriaRepository;
+    return this._flujoRepository;
   }
 
-
-  get getCategoriasUseCase(): GetCategoriasUseCase {
-    if (!this._getCategoriasUseCase) {
-      this._getCategoriasUseCase = new GetCategoriasUseCase(this.categoriaRepository);
+  get accesorioRepository(): AccesorioRepositoryImpl {
+    if (!this._accesorioRepository) {
+      this._accesorioRepository = new AccesorioRepositoryImpl(
+        this.localDataSource
+      );
     }
-    return this._getCategoriasUseCase;
+    return this._accesorioRepository;
   }
 
-  get getCategoriaByIdUseCase(): GetCategoriaByIdUseCase {
-    if (!this._getCategoriaByIdUseCase) {
-      this._getCategoriaByIdUseCase = new GetCategoriaByIdUseCase(this.categoriaRepository);
+  get productoRepository(): ProductoRepositoryImpl {
+    if (!this._productoRepository) {
+      this._productoRepository = new ProductoRepositoryImpl(
+        this.localDataSource
+      );
     }
-    return this._getCategoriaByIdUseCase;
-  }
-
-  get calcularCotizacionUseCase(): CalcularCotizacionUseCase {
-    if (!this._calcularCotizacionUseCase) {
-      this._calcularCotizacionUseCase = new CalcularCotizacionUseCase();
-    }
-    return this._calcularCotizacionUseCase;
+    return this._productoRepository;
   }
 }
 
