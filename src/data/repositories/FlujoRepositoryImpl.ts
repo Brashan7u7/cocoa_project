@@ -1,18 +1,16 @@
-import { LocalDataSource } from "../datasources/LocalDataSource";
+import { dataSource } from "../datasources";
 import { FlujoMapper } from "../mappers/FlujoMapper";
 import { FlujoEntity } from "../../domain/entities/Flujo";
 import { FlujoRepository } from "../../domain/repositories/FlujoRepository";
 
 export class FlujoRepositoryImpl implements FlujoRepository {
-  constructor(private localDataSource: LocalDataSource) {}
-
   async getFlujos(): Promise<FlujoEntity[]> {
-    const data = await this.localDataSource.getFlujos();
+    const data = await dataSource.getFlujos();
     return FlujoMapper.toDomainList(data);
   }
 
   async getFlujoById(id: string): Promise<FlujoEntity | null> {
-    const data = await this.localDataSource.getFlujoById(id);
+    const data = await dataSource.getFlujoById(id);
     if (!data) return null;
     return FlujoMapper.toDomain(data);
   }

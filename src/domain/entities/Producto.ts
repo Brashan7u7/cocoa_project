@@ -1,23 +1,20 @@
 export interface Producto {
-  id: string; //Nuevo
+  id: string;
   nombre: string;
   descripcion: string;
   presentacionKg: number;
   precioBulto: number;
-  // Se va a eliminar
-  // consumoTotalFaseKg: number;
-  // notaTecnica: string;
+  imagen?: string;
 }
 
 export class ProductoEntity {
   constructor(
-    public readonly id: string, //Nuevo
+    public readonly id: string,
     public readonly nombre: string,
     public readonly descripcion: string,
     public readonly presentacionKg: number,
     public readonly precioBulto: number,
-    // public readonly consumoTotalFaseKg: number,
-    // public readonly notaTecnica: string,
+    public readonly imagen?: string,
   ) {}
 
   // Antigulo

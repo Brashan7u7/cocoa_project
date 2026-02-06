@@ -8,6 +8,7 @@ export class ProductoMapper {
       data.descripcion,
       data.presentacion_kg,
       data.precio_bulto,
+      data.imagen,
     );
   }
 

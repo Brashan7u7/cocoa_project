@@ -1,4 +1,3 @@
-import { LocalDataSource } from "../data/datasources/LocalDataSource";
 import { FlujoRepositoryImpl } from "../data/repositories/FlujoRepositoryImpl";
 import { AccesorioRepositoryImpl } from "../data/repositories/AccesorioRepositoryImpl";
 import { ProductoRepositoryImpl } from "../data/repositories/ProductoRepositoryImpl";
@@ -6,7 +5,6 @@ import { ProductoRepositoryImpl } from "../data/repositories/ProductoRepositoryI
 class DIContainer {
   private static instance: DIContainer;
 
-  private _localDataSource?: LocalDataSource;
   private _flujoRepository?: FlujoRepositoryImpl;
   private _accesorioRepository?: AccesorioRepositoryImpl;
   private _productoRepository?: ProductoRepositoryImpl;
@@ -20,34 +18,23 @@ class DIContainer {
     return DIContainer.instance;
   }
 
-  get localDataSource(): LocalDataSource {
-    if (!this._localDataSource) {
-      this._localDataSource = new LocalDataSource();
-    }
-    return this._localDataSource;
-  }
-
   get flujoRepository(): FlujoRepositoryImpl {
     if (!this._flujoRepository) {
-      this._flujoRepository = new FlujoRepositoryImpl(this.localDataSource);
+      this._flujoRepository = new FlujoRepositoryImpl();
     }
     return this._flujoRepository;
   }
 
   get accesorioRepository(): AccesorioRepositoryImpl {
     if (!this._accesorioRepository) {
-      this._accesorioRepository = new AccesorioRepositoryImpl(
-        this.localDataSource
-      );
+      this._accesorioRepository = new AccesorioRepositoryImpl();
     }
     return this._accesorioRepository;
   }
 
   get productoRepository(): ProductoRepositoryImpl {
     if (!this._productoRepository) {
-      this._productoRepository = new ProductoRepositoryImpl(
-        this.localDataSource
-      );
+      this._productoRepository = new ProductoRepositoryImpl();
     }
     return this._productoRepository;
   }

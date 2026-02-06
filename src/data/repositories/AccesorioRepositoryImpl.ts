@@ -1,18 +1,16 @@
-import { LocalDataSource } from "../datasources/LocalDataSource";
+import { dataSource } from "../datasources";
 import { AccesorioMapper } from "../mappers/AccesorioMapper";
 import { AccesorioEntity } from "../../domain/entities/Accesorio";
 import { AccesorioRepository } from "../../domain/repositories/AccesorioRepository";
 
 export class AccesorioRepositoryImpl implements AccesorioRepository {
-  constructor(private localDataSource: LocalDataSource) {}
-
   async getAccesorios(): Promise<AccesorioEntity[]> {
-    const data = await this.localDataSource.getAccesorios();
+    const data = await dataSource.getAccesorios();
     return AccesorioMapper.toDomainList(data);
   }
 
   async getAccesoriosPorFase(fase: string): Promise<AccesorioEntity[]> {
-    const data = await this.localDataSource.getAccesoriosPorFase(fase);
+    const data = await dataSource.getAccesoriosPorFase(fase);
     return AccesorioMapper.toDomainList(data);
   }
 }

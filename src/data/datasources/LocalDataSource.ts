@@ -1,502 +1,527 @@
 const appData = {
-  "app_config": {
-    "nombre": "Cerdos el Tío",
-    "version": "1.0.0",
-    "moneda": "MXN"
+  app_config: {
+    nombre: "Cerdos el Tío",
+    version: "1.0.0",
+    moneda: "MXN",
   },
 
-  "flujo_principal": {
-    "pantalla_inicio": {
-      "id": "inicio",
-      "pregunta": "¿Qué quieres hacer hoy?",
-      "opciones": [
+  flujo_principal: {
+    pantalla_inicio: {
+      id: "inicio",
+      pregunta: "¿Qué quieres hacer hoy?",
+      opciones: [
         {
-          "id": "reproducir",
-          "titulo": "Reproducir",
-          "subtitulo": "Macho y Hembra",
-          "icono": "icon_reproduccion",
-          "imagen": "img_reproduccion.png",
-          "siguiente_pantalla": "objetivo_reproduccion"
+          id: "reproducir",
+          titulo: "Reproducir",
+          subtitulo: "Macho y Hembra",
+          icono: "icon_reproduccion",
+          imagen:
+            "https://images.unsplash.com/photo-1593179243685-5c8b8a715d51?w=400",
+          siguiente_pantalla: "objetivo_reproduccion",
         },
         {
-          "id": "criar_lechones",
-          "titulo": "Criar lechones",
-          "subtitulo": "De 7 a 90 días",
-          "icono": "icon_lechon",
-          "imagen": "img_lechones.png",
-          "siguiente_pantalla": "objetivo_cria"
+          id: "criar_lechones",
+          titulo: "Criar lechones",
+          subtitulo: "De 7 a 90 días",
+          icono: "icon_lechon",
+          imagen:
+            "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400",
+          siguiente_pantalla: "objetivo_cria",
         },
         {
-          "id": "engordar_cerdos",
-          "titulo": "Engordar cerdos",
-          "subtitulo": "Más de 60 días o de 30 a 110 kilos",
-          "icono": "icon_cerdo",
-          "imagen": "img_engorda.png",
-          "siguiente_pantalla": "etapa_engorda"
-        }
-      ]
-    }
+          id: "engordar_cerdos",
+          titulo: "Engordar cerdos",
+          subtitulo: "Más de 60 días o de 30 a 110 kilos",
+          icono: "icon_cerdo",
+          imagen:
+            "https://images.unsplash.com/photo-1590080875897-700e68245fa8?w=400",
+          siguiente_pantalla: "etapa_engorda",
+        },
+      ],
+    },
   },
 
-  "flujos": {
-    "criar_lechones": {
-      "objetivo_cria": {
-        "id": "objetivo_cria",
-        "pregunta": "¿Cuál es tu objetivo?",
-        "opciones": [
+  flujos: {
+    criar_lechones: {
+      objetivo_cria: {
+        id: "objetivo_cria",
+        pregunta: "¿Cuál es tu objetivo?",
+        opciones: [
           {
-            "id": "pie_cria",
-            "titulo": "Lechones para pie de cría o reemplazos",
-            "icono": "icon_warning",
-            "color_alerta": "#FFC107",
-            "mensaje_alerta": "Se orienta para priorizar el desarrollo de la estructura ósea con combinación de núcleos vitamínicos",
-            "siguiente_pantalla": "edad_lechones"
+            id: "pie_cria",
+            titulo: "Lechones para pie de cría o reemplazos",
+            icono: "icon_warning",
+            color_alerta: "#FFC107",
+            mensaje_alerta:
+              "Se orienta para priorizar el desarrollo de la estructura ósea con combinación de núcleos vitamínicos",
+            siguiente_pantalla: "edad_lechones",
           },
           {
-            "id": "engorda",
-            "titulo": "Lechones para engorda",
-            "icono": "icon_info",
-            "mensaje_info": "Se orienta por priorizar el desarrollo muscular en menor tiempo posible",
-            "siguiente_pantalla": "edad_lechones"
-          }
-        ]
+            id: "engorda",
+            titulo: "Lechones para engorda",
+            icono: "icon_info",
+            mensaje_info:
+              "Se orienta por priorizar el desarrollo muscular en menor tiempo posible",
+            siguiente_pantalla: "edad_lechones",
+          },
+        ],
       },
 
-      "edad_lechones": {
-        "id": "edad_lechones",
-        "pregunta": "¿Cuántos días de nacidos tienen tus lechones?",
-        "tipo_selector": "visual_cards",
-        "opciones": [
+      edad_lechones: {
+        id: "edad_lechones",
+        pregunta: "¿Cuántos días de nacidos tienen tus lechones?",
+        tipo_selector: "visual_cards",
+        opciones: [
           {
-            "id": "menos_7_dias",
-            "titulo": "Menos de 7 días",
-            "imagen": "img_lechon_recien_nacido.png",
-            "siguiente_pantalla": "alerta_lactancia_temprana"
+            id: "menos_7_dias",
+            titulo: "Menos de 7 días",
+            imagen:
+              "https://imgs.search.brave.com/J9oit5RuQ-aEzFO-9uthtTPVX6HiFVdXWPAkAJ2XyCc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/Ym1lZGl0b3Jlcy5t/eC8yMDIyLzEwL0lt/cG9ydGFuY2lhLWlu/bXVub2xvZ2ljYS1j/YWxvc3Ryby1jZXJk/by1yZWNpZW4tbmFj/aWRvLTY5NngzNDgu/anBn",
+            siguiente_pantalla: "alerta_lactancia_temprana",
           },
           {
-            "id": "fase_lactancia",
-            "titulo": "FASE I - LACTANCIA",
-            "rango": "7 a 21 días",
-            "detalle": "De 2 a 3 semanas",
-            "consumo_esperado": "hasta 3.5 kg",
-            "imagen": "img_lechon_fase1.png",
-            "siguiente_pantalla": "input_cantidad_lechones",
-            "fase_destino": "fase_1"
+            id: "fase_lactancia",
+            titulo: "FASE I - LACTANCIA",
+            rango: "7 a 21 días",
+            detalle: "De 2 a 3 semanas",
+            consumo_esperado: "hasta 3.5 kg",
+            imagen:
+              "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400",
+            siguiente_pantalla: "input_cantidad_lechones",
+            fase_destino: "fase_1",
           },
           {
-            "id": "fase_destetados",
-            "titulo": "FASE II - DESTETADOS",
-            "rango": "De 21 a 28 días",
-            "detalle": "De 3 a 4 semanas",
-            "consumo_esperado": "de 5.0 a 6 kg",
-            "imagen": "img_lechon_fase2.png",
-            "siguiente_pantalla": "input_cantidad_lechones",
-            "fase_destino": "fase_2"
+            id: "fase_destetados",
+            titulo: "FASE II - DESTETADOS",
+            rango: "De 21 a 28 días",
+            detalle: "De 3 a 4 semanas",
+            consumo_esperado: "de 5.0 a 6 kg",
+            imagen:
+              "https://imgs.search.brave.com/CZwD8rg1l8k0F8yn7OJom398GWZlbsZpuEIU-heO2Ig/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wb3Jj/aW5ld3MuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI0LzA5/L2JwLWVzcGFjaW8u/cG5n",
+            siguiente_pantalla: "input_cantidad_lechones",
+            fase_destino: "fase_2",
           },
           {
-            "id": "fase_transicion",
-            "titulo": "FASE III - TRANSICIÓN",
-            "rango": "De 42 a 60 días",
-            "detalle": "De 6 a 8 semanas",
-            "consumo_esperado": "de 11 a 18 kg",
-            "imagen": "img_lechon_fase3.png",
-            "siguiente_pantalla": "input_cantidad_lechones",
-            "fase_destino": "fase_3"
-          }
-        ]
+            id: "fase_transicion",
+            titulo: "FASE III - TRANSICIÓN",
+            rango: "De 42 a 60 días",
+            detalle: "De 6 a 8 semanas",
+            consumo_esperado: "de 11 a 18 kg",
+            imagen:
+              "https://imgs.search.brave.com/JGfhUndAzMEyde9vGwVNMf6A6j6_PDyvatATZ1erRbI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2Vwb3JrLmVzL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIxLzA3/L3BleGVscy1tYWxp/LW1hZWRlci0xMTA4/MjAtMTAyNHg2ODEu/anBn",
+            siguiente_pantalla: "input_cantidad_lechones",
+            fase_destino: "fase_3",
+          },
+        ],
       },
 
-      "alerta_lactancia_temprana": {
-        "id": "alerta_lactancia_temprana",
-        "tipo": "informativo",
-        "titulo": "Lechones en lactancia temprana",
-        "mensaje": "Si tus lechones tienen menos de 20 días siguen en la etapa de LACTANCIA, por lo cual es importante cuidar la alimentación de la madre.",
-        "recomendacion": "Recomendamos: 2 kilos x día de M-O TURBO",
-        "imagen": "img_cerda_lactante.png",
-        "boton_continuar": true,
-        "siguiente_pantalla": "inicio"
-      }
+      alerta_lactancia_temprana: {
+        id: "alerta_lactancia_temprana",
+        tipo: "informativo",
+        titulo: "Lechones en lactancia temprana",
+        mensaje:
+          "Si tus lechones tienen menos de 20 días siguen en la etapa de LACTANCIA, por lo cual es importante cuidar la alimentación de la madre.",
+        recomendacion: "Recomendamos: 2 kilos x día de M-O TURBO",
+        imagen:
+          "https://images.unsplash.com/photo-1593179243685-5c8b8a715d51?w=400",
+        boton_continuar: true,
+        siguiente_pantalla: "inicio",
+      },
     },
 
-    "decision_destino": {
-      "id": "destino_lechones",
-      "pregunta": "¿Tus lechones son para vender como lechón o para seguir engordando?",
-      "aplica_en_fases": ["fase_2", "fase_3"],
-      "opciones": [
+    decision_destino: {
+      id: "destino_lechones",
+      pregunta:
+        "¿Tus lechones son para vender como lechón o para seguir engordando?",
+      aplica_en_fases: ["fase_2", "fase_3"],
+      opciones: [
         {
-          "id": "venta_lechon",
-          "titulo": "Venta de lechón",
-          "imagen": "img_venta_lechon.png",
-          "siguiente_pantalla": "seleccion_plan"
+          id: "venta_lechon",
+          titulo: "Venta de lechón",
+          subtitulo: "Para vender como lechón destetado",
+          imagen:
+            "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400",
+          siguiente_pantalla: "seleccion_plan",
         },
         {
-          "id": "engorda_cerdo",
-          "titulo": "Engorda de cerdo",
-          "imagen": "img_engorda_cerdo.png",
-          "siguiente_pantalla": "seleccion_plan"
-        }
-      ]
-    }
+          id: "engorda_cerdo",
+          titulo: "Engorda de cerdo",
+          subtitulo: "Para continuar engordando hasta el mercado",
+          imagen:
+            "https://imgs.search.brave.com/7EX8XTVeqdHLK2aOTzpw_CpxEmz5nbmS_rWQaKSy8l0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9lbC1j/aWVycmUtZGUtdW4t/aGVybW9zby1jZXJk/by1ncmlzLXktcm9z/YS10ZW5kaWRvLWVu/LXN1ZWxvLWZlbGl6/LWdvcmRvLWVzdCVD/MyVBMS10dW1iYWRv/LWNvbi1wYWphLTIz/MDI3Mzk3MC5qcGc",
+          siguiente_pantalla: "seleccion_plan",
+        },
+      ],
+    },
   },
 
-  "inputs": {
-    "cantidad_lechones": {
-      "id": "input_cantidad_lechones",
-      "titulo": "Ingresa tus datos",
-      "pregunta": "¿Cuántos lechones fueron producidos?",
-      "campo": {
-        "tipo": "numero",
-        "label": "Lechones",
-        "placeholder": "20",
-        "min": 1,
-        "max": 500,
-        "default": 20
+  inputs: {
+    cantidad_lechones: {
+      id: "input_cantidad_lechones",
+      titulo: "Ingresa tus datos",
+      pregunta: "¿Cuántos lechones fueron producidos?",
+      campo: {
+        tipo: "numero",
+        label: "Lechones",
+        placeholder: "20",
+        min: 1,
+        max: 500,
+        default: 20,
       },
-      "nota_lateral": {
-        "texto": "Recuerda que a tu cerda se le debe dar medio kilo de alimento por cada lechón nacido vivo",
-        "icono": "icon_info"
+      nota_lateral: {
+        texto:
+          "Recuerda que a tu cerda se le debe dar medio kilo de alimento por cada lechón nacido vivo",
+        icono: "icon_info",
       },
-      "boton": "CONTINUAR"
-    }
+      boton: "CONTINUAR",
+    },
   },
 
-  "planes_alimentacion": {
-    "fase_1": {
-      "planes": [
+  planes_alimentacion: {
+    fase_1: {
+      planes: [
         {
-          "id": "bio_nova_1",
-          "nombre": "BIO NOVA 1",
-          "tipo": "premium",
-          "descripcion": "El desarrollo de los lechones será superior. Mejor peso en menor tiempo gracias a una estructura nutricional óptima de vitaminas, antioxidantes y minerales digestivos.",
-          "beneficios": [
+          id: "bio_nova_1",
+          nombre: "BIO NOVA 1",
+          tipo: "premium",
+          descripcion:
+            "El desarrollo de los lechones será superior. Mejor peso en menor tiempo gracias a una estructura nutricional óptima de vitaminas, antioxidantes y minerales digestivos.",
+          beneficios: [
             "Mayor desarrollo",
             "Menor tiempo de engorda",
-            "Mejor estructura nutricional"
-          ]
+            "Mejor estructura nutricional",
+          ],
         },
         {
-          "id": "ps1",
-          "nombre": "PS1",
-          "tipo": "economico",
-          "descripcion": "El desarrollo de los lechones será el esperado para la etapa con una estructura nutricional y contenido de vitaminas, antioxidantes y minerales básicos.",
-          "beneficios": [
-            "Desarrollo esperado",
-            "Costo accesible"
-          ]
-        }
-      ]
+          id: "ps1",
+          nombre: "PS1",
+          tipo: "economico",
+          descripcion:
+            "El desarrollo de los lechones será el esperado para la etapa con una estructura nutricional y contenido de vitaminas, antioxidantes y minerales básicos.",
+          beneficios: ["Desarrollo esperado", "Costo accesible"],
+        },
+      ],
     },
-    "fase_2": {
-      "planes": [
+    fase_2: {
+      planes: [
         {
-          "id": "bio_nova_2",
-          "nombre": "BIO NOVA 2",
-          "tipo": "premium",
-          "descripcion": "Fórmula especial para reducir el estrés del destete con máxima digestibilidad.",
-          "beneficios": [
+          id: "bio_nova_2",
+          nombre: "BIO NOVA 2",
+          tipo: "premium",
+          descripcion:
+            "Fórmula especial para reducir el estrés del destete con máxima digestibilidad.",
+          beneficios: [
             "Reduce estrés post-destete",
             "Alta digestibilidad",
-            "Transición suave"
-          ]
+            "Transición suave",
+          ],
         },
         {
-          "id": "ps2",
-          "nombre": "PS2",
-          "tipo": "economico",
-          "descripcion": "Nutrición básica para lechones destetados con los requerimientos esenciales.",
-          "beneficios": [
-            "Costo accesible",
-            "Nutrición básica completa"
-          ]
-        }
-      ]
+          id: "ps2",
+          nombre: "PS2",
+          tipo: "economico",
+          descripcion:
+            "Nutrición básica para lechones destetados con los requerimientos esenciales.",
+          beneficios: ["Costo accesible", "Nutrición básica completa"],
+        },
+      ],
     },
-    "fase_3": {
-      "planes": [
+    fase_3: {
+      planes: [
         {
-          "id": "bio_nova_3",
-          "nombre": "BIO NOVA 3",
-          "tipo": "premium",
-          "descripcion": "Máximo desarrollo de estructura ósea y preparación óptima para engorda.",
-          "beneficios": [
+          id: "bio_nova_3",
+          nombre: "BIO NOVA 3",
+          tipo: "premium",
+          descripcion:
+            "Máximo desarrollo de estructura ósea y preparación óptima para engorda.",
+          beneficios: [
             "Desarrollo óseo superior",
             "Preparación para engorda",
-            "Mayor ganancia de peso"
-          ]
+            "Mayor ganancia de peso",
+          ],
         },
         {
-          "id": "ps3",
-          "nombre": "PS3",
-          "tipo": "economico",
-          "descripcion": "Alimentación de transición con nutrientes esenciales para el crecimiento.",
-          "beneficios": [
-            "Nutrición esencial",
-            "Costo optimizado"
-          ]
-        }
-      ]
-    }
+          id: "ps3",
+          nombre: "PS3",
+          tipo: "economico",
+          descripcion:
+            "Alimentación de transición con nutrientes esenciales para el crecimiento.",
+          beneficios: ["Nutrición esencial", "Costo optimizado"],
+        },
+      ],
+    },
   },
 
-  "productos": {
-    "lechones": [
+  productos: {
+    lechones: [
       {
-        "id": "bio_start",
-        "nombre": "Bio Start Pre-Iniciador",
-        "linea": "premium",
-        "fase": "fase_1",
-        "descripcion": "Alta digestibilidad para lechones en lactancia.",
-        "presentacion_kg": 25,
-        "precio_bulto": 850.00,
-        "consumo_por_animal_kg": 3.5,
-        "duracion_fase_dias": 14,
-        "imagen": "img_bio_start.png",
-        "ficha_tecnica_url": "fichas/bio_start.pdf"
+        id: "bio_start",
+        nombre: "Bio Start Pre-Iniciador",
+        linea: "premium",
+        fase: "fase_1",
+        descripcion: "Alta digestibilidad para lechones en lactancia.",
+        presentacion_kg: 25,
+        precio_bulto: 850.0,
+        consumo_por_animal_kg: 3.5,
+        duracion_fase_dias: 14,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/bio_start.pdf",
       },
       {
-        "id": "bio_nova_1",
-        "nombre": "Bio Nova 1",
-        "linea": "premium",
-        "fase": "fase_1",
-        "descripcion": "Desarrollo superior con estructura nutricional óptima.",
-        "presentacion_kg": 40,
-        "precio_bulto": 1150.00,
-        "consumo_por_animal_kg": 3.5,
-        "duracion_fase_dias": 14,
-        "imagen": "img_bio_nova_1.png",
-        "ficha_tecnica_url": "fichas/bio_nova_1.pdf"
+        id: "bio_nova_1",
+        nombre: "Bio Nova 1",
+        linea: "premium",
+        fase: "fase_1",
+        descripcion: "Desarrollo superior con estructura nutricional óptima.",
+        presentacion_kg: 40,
+        precio_bulto: 1150.0,
+        consumo_por_animal_kg: 3.5,
+        duracion_fase_dias: 14,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/bio_nova_1.pdf",
       },
       {
-        "id": "ps1",
-        "nombre": "PS1",
-        "linea": "economica",
-        "fase": "fase_1",
-        "descripcion": "Nutrición básica para lactancia.",
-        "presentacion_kg": 40,
-        "precio_bulto": 780.00,
-        "consumo_por_animal_kg": 3.5,
-        "duracion_fase_dias": 14,
-        "imagen": "img_ps1.png",
-        "ficha_tecnica_url": "fichas/ps1.pdf"
+        id: "ps1",
+        nombre: "PS1",
+        linea: "economica",
+        fase: "fase_1",
+        descripcion: "Nutrición básica para lactancia.",
+        presentacion_kg: 40,
+        precio_bulto: 780.0,
+        consumo_por_animal_kg: 3.5,
+        duracion_fase_dias: 14,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/ps1.pdf",
       },
       {
-        "id": "bio_nova_2",
-        "nombre": "Bio Nova 2",
-        "linea": "premium",
-        "fase": "fase_2",
-        "descripcion": "Fórmula especial para reducir el estrés del destete.",
-        "presentacion_kg": 40,
-        "precio_bulto": 1200.00,
-        "consumo_por_animal_kg": 5.0,
-        "duracion_fase_dias": 7,
-        "imagen": "img_bio_nova_2.png",
-        "ficha_tecnica_url": "fichas/bio_nova_2.pdf"
+        id: "bio_nova_2",
+        nombre: "Bio Nova 2",
+        linea: "premium",
+        fase: "fase_2",
+        descripcion: "Fórmula especial para reducir el estrés del destete.",
+        presentacion_kg: 40,
+        precio_bulto: 1200.0,
+        consumo_por_animal_kg: 5.0,
+        duracion_fase_dias: 7,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/bio_nova_2.pdf",
       },
       {
-        "id": "ps2",
-        "nombre": "PS2",
-        "linea": "economica",
-        "fase": "fase_2",
-        "descripcion": "Nutrición post-destete económica.",
-        "presentacion_kg": 40,
-        "precio_bulto": 850.00,
-        "consumo_por_animal_kg": 5.0,
-        "duracion_fase_dias": 7,
-        "imagen": "img_ps2.png",
-        "ficha_tecnica_url": "fichas/ps2.pdf"
+        id: "ps2",
+        nombre: "PS2",
+        linea: "economica",
+        fase: "fase_2",
+        descripcion: "Nutrición post-destete económica.",
+        presentacion_kg: 40,
+        precio_bulto: 850.0,
+        consumo_por_animal_kg: 5.0,
+        duracion_fase_dias: 7,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/ps2.pdf",
       },
       {
-        "id": "bio_growth_plus",
-        "nombre": "Bio Growth Plus",
-        "linea": "premium",
-        "fase": "fase_3",
-        "descripcion": "Máximo desarrollo de estructura ósea.",
-        "presentacion_kg": 40,
-        "precio_bulto": 1100.00,
-        "consumo_por_animal_kg": 18.0,
-        "duracion_fase_dias": 18,
-        "imagen": "img_bio_growth.png",
-        "ficha_tecnica_url": "fichas/bio_growth.pdf"
+        id: "bio_growth_plus",
+        nombre: "Bio Growth Plus",
+        linea: "premium",
+        fase: "fase_3",
+        descripcion: "Máximo desarrollo de estructura ósea.",
+        presentacion_kg: 40,
+        precio_bulto: 1100.0,
+        consumo_por_animal_kg: 18.0,
+        duracion_fase_dias: 18,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/bio_growth.pdf",
       },
       {
-        "id": "ps3",
-        "nombre": "PS3",
-        "linea": "economica",
-        "fase": "fase_3",
-        "descripcion": "Transición económica hacia engorda.",
-        "presentacion_kg": 40,
-        "precio_bulto": 780.00,
-        "consumo_por_animal_kg": 18.0,
-        "duracion_fase_dias": 18,
-        "imagen": "img_ps3.png",
-        "ficha_tecnica_url": "fichas/ps3.pdf"
-      }
+        id: "ps3",
+        nombre: "PS3",
+        linea: "economica",
+        fase: "fase_3",
+        descripcion: "Transición económica hacia engorda.",
+        presentacion_kg: 40,
+        precio_bulto: 780.0,
+        consumo_por_animal_kg: 18.0,
+        duracion_fase_dias: 18,
+        imagen:
+          "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",
+        ficha_tecnica_url: "fichas/ps3.pdf",
+      },
     ],
-    "engorda": [
+    engorda: [
       {
-        "id": "maxi_engorda_a",
-        "nombre": "Maxi Engorda A",
-        "linea": "standard",
-        "etapa": "inicio",
-        "rango_peso": "30kg - 60kg",
-        "descripcion": "Conversión alimenticia acelerada.",
-        "presentacion_kg": 40,
-        "precio_bulto": 950.00,
-        "consumo_total_fase_kg": 65.0,
-        "ganancia_peso_esperada_kg": 30,
-        "imagen": "img_maxi_engorda_a.png",
-        "ficha_tecnica_url": "fichas/maxi_engorda_a.pdf"
+        id: "maxi_engorda_a",
+        nombre: "Maxi Engorda A",
+        linea: "standard",
+        etapa: "inicio",
+        rango_peso: "30kg - 60kg",
+        descripcion: "Conversión alimenticia acelerada.",
+        presentacion_kg: 40,
+        precio_bulto: 950.0,
+        consumo_total_fase_kg: 65.0,
+        ganancia_peso_esperada_kg: 30,
+        imagen: "img_maxi_engorda_a.png",
+        ficha_tecnica_url: "fichas/maxi_engorda_a.pdf",
       },
       {
-        "id": "maxi_engorda_b",
-        "nombre": "Maxi Engorda B",
-        "linea": "standard",
-        "etapa": "desarrollo",
-        "rango_peso": "60kg - 90kg",
-        "descripcion": "Desarrollo muscular óptimo.",
-        "presentacion_kg": 40,
-        "precio_bulto": 920.00,
-        "consumo_total_fase_kg": 85.0,
-        "ganancia_peso_esperada_kg": 30,
-        "imagen": "img_maxi_engorda_b.png",
-        "ficha_tecnica_url": "fichas/maxi_engorda_b.pdf"
+        id: "maxi_engorda_b",
+        nombre: "Maxi Engorda B",
+        linea: "standard",
+        etapa: "desarrollo",
+        rango_peso: "60kg - 90kg",
+        descripcion: "Desarrollo muscular óptimo.",
+        presentacion_kg: 40,
+        precio_bulto: 920.0,
+        consumo_total_fase_kg: 85.0,
+        ganancia_peso_esperada_kg: 30,
+        imagen: "img_maxi_engorda_b.png",
+        ficha_tecnica_url: "fichas/maxi_engorda_b.pdf",
       },
       {
-        "id": "maxi_engorda_c",
-        "nombre": "Maxi Engorda C",
-        "linea": "standard",
-        "etapa": "finalizacion",
-        "rango_peso": "90kg - 110kg",
-        "descripcion": "Finalización y acabado para mercado.",
-        "presentacion_kg": 40,
-        "precio_bulto": 880.00,
-        "consumo_total_fase_kg": 70.0,
-        "ganancia_peso_esperada_kg": 20,
-        "imagen": "img_maxi_engorda_c.png",
-        "ficha_tecnica_url": "fichas/maxi_engorda_c.pdf"
-      }
+        id: "maxi_engorda_c",
+        nombre: "Maxi Engorda C",
+        linea: "standard",
+        etapa: "finalizacion",
+        rango_peso: "90kg - 110kg",
+        descripcion: "Finalización y acabado para mercado.",
+        presentacion_kg: 40,
+        precio_bulto: 880.0,
+        consumo_total_fase_kg: 70.0,
+        ganancia_peso_esperada_kg: 20,
+        imagen: "img_maxi_engorda_c.png",
+        ficha_tecnica_url: "fichas/maxi_engorda_c.pdf",
+      },
     ],
-    "reproductores": [
+    reproductores: [
       {
-        "id": "mo_turbo",
-        "nombre": "M-O Turbo",
-        "linea": "reproductores",
-        "tipo_animal": "cerda_lactante",
-        "descripcion": "Alimento para cerdas en lactancia.",
-        "presentacion_kg": 40,
-        "precio_bulto": 750.00,
-        "consumo_diario_kg": 2.0,
-        "imagen": "img_mo_turbo.png",
-        "ficha_tecnica_url": "fichas/mo_turbo.pdf"
-      }
+        id: "mo_turbo",
+        nombre: "M-O Turbo",
+        linea: "reproductores",
+        tipo_animal: "cerda_lactante",
+        descripcion: "Alimento para cerdas en lactancia.",
+        presentacion_kg: 40,
+        precio_bulto: 750.0,
+        consumo_diario_kg: 2.0,
+        imagen: "img_mo_turbo.png",
+        ficha_tecnica_url: "fichas/mo_turbo.pdf",
+      },
     ],
-    "accesorios": [
+    accesorios: [
       {
-        "id": "bebederos_chupon",
-        "nombre": "Bebederos con chupón",
-        "descripcion": "Bebederos tipo chupón para lechones.",
-        "presentacion": "Paquete de 10",
-        "precio": 450.00,
-        "imagen": "img_bebederos.png",
-        "recomendado_para": ["fase_1", "fase_2", "fase_3"]
+        id: "bebederos_chupon",
+        nombre: "Bebederos con chupón",
+        descripcion: "Bebederos tipo chupón para lechones.",
+        presentacion: "Paquete de 10",
+        precio: 450.0,
+        imagen:
+          "https://m.media-amazon.com/images/I/516H25kUwJL.jpg",
+        recomendado_para: ["fase_1", "fase_2", "fase_3"],
       },
       {
-        "id": "kilos_lechones",
-        "nombre": "Kilos para lechones",
-        "descripcion": "Complemento alimenticio adicional.",
-        "presentacion_kg": 4,
-        "precio": 180.00,
-        "imagen": "img_kilos_lechones.png"
-      }
-    ]
+        id: "kilos_lechones",
+        nombre: "Kilos para lechones",
+        descripcion: "Complemento alimenticio adicional.",
+        presentacion_kg: 4,
+        precio: 180.0,
+        imagen:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnOv2QzTJcymVGmdP5EUYy0pkQzzv-yNg4Rw&s",
+      },
+    ],
   },
 
-  "pantalla_resultado": {
-    "estructura": {
-      "titulo": "Resultado",
-      "campos": [
+  pantalla_resultado: {
+    estructura: {
+      titulo: "Resultado",
+      campos: [
         {
-          "label": "La recomendación de alimento para sus lechones es",
-          "tipo": "producto_destacado",
-          "enlace_ficha": true
+          label: "La recomendación de alimento para sus lechones es",
+          tipo: "producto_destacado",
+          enlace_ficha: true,
         },
         {
-          "label": "y te sugerimos agregar los bebederos con chupón",
-          "tipo": "producto_sugerido"
-        }
+          label: "y te sugerimos agregar los bebederos con chupón",
+          tipo: "producto_sugerido",
+        },
       ],
-      "productos_adicionales": [
+      productos_adicionales: [
         {
-          "id": "kilos_lechones",
-          "label": "Kilos para lechones",
-          "mostrar_cantidad": true,
-          "unidad": "kg"
-        }
+          id: "kilos_lechones",
+          label: "Kilos para lechones",
+          mostrar_cantidad: true,
+          unidad: "kg",
+        },
       ],
-      "pregunta_adicional": {
-        "label": "Agregar bebederos",
-        "tipo": "si_no",
-        "opciones": ["SÍ", "NO"]
+      pregunta_adicional: {
+        label: "Agregar bebederos",
+        tipo: "si_no",
+        opciones: ["SÍ", "NO"],
       },
-      "boton_final": "CONTINUAR"
-    }
-  },
-
-  "calculos": {
-    "formulas": {
-      "bultos_necesarios": "Math.ceil((cantidad_animales * consumo_por_animal_kg) / presentacion_kg)",
-      "costo_total_alimento": "bultos_necesarios * precio_bulto",
-      "kilos_lechones_sugeridos": "cantidad_animales * 0.2"
+      boton_final: "CONTINUAR",
     },
-    "notas": {
-      "alimentacion_cerda": "Se debe dar medio kilo de alimento por cada lechón nacido vivo a la cerda lactante"
-    }
   },
 
-  "navegacion": {
-    "menu_inferior": [
-      {
-        "id": "inicio",
-        "icono": "home",
-        "label": "Inicio"
-      },
-      {
-        "id": "calculadora",
-        "icono": "calculator",
-        "label": "Calculadora"
-      },
-      {
-        "id": "productos",
-        "icono": "shopping_bag",
-        "label": "Productos"
-      },
-      {
-        "id": "historial",
-        "icono": "history",
-        "label": "Historial"
-      },
-      {
-        "id": "perfil",
-        "icono": "person",
-        "label": "Mi cuenta"
-      }
-    ]
-  },
-
-  "textos_ui": {
-    "botones": {
-      "continuar": "CONTINUAR",
-      "regresar": "REGRESAR",
-      "ver_mas": "Ver más",
-      "agregar_carrito": "Agregar al carrito",
-      "finalizar": "FINALIZAR"
+  calculos: {
+    formulas: {
+      bultos_necesarios:
+        "Math.ceil((cantidad_animales * consumo_por_animal_kg) / presentacion_kg)",
+      costo_total_alimento: "bultos_necesarios * precio_bulto",
+      kilos_lechones_sugeridos: "cantidad_animales * 0.2",
     },
-    "mensajes": {
-      "cargando": "Cargando...",
-      "error_conexion": "Error de conexión. Intenta de nuevo.",
-      "guardado_exitoso": "Guardado correctamente"
-    }
-  }
+    notas: {
+      alimentacion_cerda:
+        "Se debe dar medio kilo de alimento por cada lechón nacido vivo a la cerda lactante",
+    },
+  },
+
+  navegacion: {
+    menu_inferior: [
+      {
+        id: "inicio",
+        icono: "home",
+        label: "Inicio",
+      },
+      {
+        id: "calculadora",
+        icono: "calculator",
+        label: "Calculadora",
+      },
+      {
+        id: "productos",
+        icono: "shopping_bag",
+        label: "Productos",
+      },
+      {
+        id: "historial",
+        icono: "history",
+        label: "Historial",
+      },
+      {
+        id: "perfil",
+        icono: "person",
+        label: "Mi cuenta",
+      },
+    ],
+  },
+
+  textos_ui: {
+    botones: {
+      continuar: "CONTINUAR",
+      regresar: "REGRESAR",
+      ver_mas: "Ver más",
+      agregar_carrito: "Agregar al carrito",
+      finalizar: "FINALIZAR",
+    },
+    mensajes: {
+      cargando: "Cargando...",
+      error_conexion: "Error de conexión. Intenta de nuevo.",
+      guardado_exitoso: "Guardado correctamente",
+    },
+  },
 };
 
 export class LocalDataSource {
@@ -522,11 +547,51 @@ export class LocalDataSource {
     if (flujoData) {
       Object.entries(flujoData).forEach(([id, data]) => {
         const pantalla = data as Record<string, any>;
-        pantallas.push({
-          id,
-          ...pantalla,
-          tipo: this.inferirTipoPantalla(pantalla),
-        });
+
+        // Para edad_lechones, modificar las opciones para incluir decision_destino
+        if (id === "edad_lechones") {
+          const opcionesModificadas = pantalla.opciones?.map((opcion: any) => {
+            // fase_2 y fase_3 deben ir a decision_destino primero
+            if (
+              opcion.fase_destino === "fase_2" ||
+              opcion.fase_destino === "fase_3"
+            ) {
+              return {
+                ...opcion,
+                siguiente_pantalla: "decision_destino",
+              };
+            }
+            return opcion;
+          });
+
+          pantallas.push({
+            id,
+            ...pantalla,
+            opciones: opcionesModificadas,
+            tipo: this.inferirTipoPantalla(pantalla),
+          });
+        } else {
+          pantallas.push({
+            id,
+            ...pantalla,
+            tipo: this.inferirTipoPantalla(pantalla),
+          });
+        }
+      });
+    }
+
+    // Agregar pantalla de decision_destino (del JSON)
+    const decisionDestino = (appData.flujos as Record<string, any>)
+      .decision_destino;
+    if (decisionDestino && flujoId === "criar_lechones") {
+      pantallas.push({
+        ...decisionDestino,
+        id: "decision_destino", // Importante: después del spread para sobrescribir el id original
+        tipo: "seleccion",
+        opciones: decisionDestino.opciones?.map((op: any) => ({
+          ...op,
+          siguiente_pantalla: "input_cantidad_lechones",
+        })),
       });
     }
 
@@ -619,12 +684,23 @@ export class LocalDataSource {
   }
 
   async getAccesoriosPorFase(fase: string): Promise<any[]> {
+    // Mostrar accesorios recomendados para la fase O que no tienen filtro específico
     return appData.productos.accesorios.filter(
-      (acc: any) => acc.recomendado_para?.includes(fase)
+      (acc: any) =>
+        !acc.recomendado_para || acc.recomendado_para.includes(fase),
     );
   }
 
-  async getProductos(): Promise<{ lechones: any[]; engorda: any[]; reproductores: any[] }> {
+  // Obtener todos los accesorios sin filtro
+  async getAllAccesorios(): Promise<any[]> {
+    return appData.productos.accesorios;
+  }
+
+  async getProductos(): Promise<{
+    lechones: any[];
+    engorda: any[];
+    reproductores: any[];
+  }> {
     return {
       lechones: appData.productos.lechones,
       engorda: appData.productos.engorda,
@@ -651,13 +727,17 @@ export class LocalDataSource {
   }
 
   async getPlanesPorFase(fase: string): Promise<any[]> {
-    const planesData = (appData.planes_alimentacion as Record<string, any>)[fase];
+    const planesData = (appData.planes_alimentacion as Record<string, any>)[
+      fase
+    ];
     const planes = planesData?.planes || [];
 
     // Enriquecer los planes con información del producto
     return planes.map((plan: any) => {
       // Buscar el producto correspondiente al plan (el id del plan coincide con el id del producto)
-      const producto = appData.productos.lechones.find((p: any) => p.id === plan.id);
+      const producto = appData.productos.lechones.find(
+        (p: any) => p.id === plan.id,
+      );
 
       return {
         ...plan,
@@ -694,7 +774,11 @@ export class LocalDataSource {
     return appData.calculos.formulas;
   }
 
-  calcularBultosNecesarios(cantidadAnimales: number, consumoPorAnimalKg: number, presentacionKg: number): number {
+  calcularBultosNecesarios(
+    cantidadAnimales: number,
+    consumoPorAnimalKg: number,
+    presentacionKg: number,
+  ): number {
     return Math.ceil((cantidadAnimales * consumoPorAnimalKg) / presentacionKg);
   }
 

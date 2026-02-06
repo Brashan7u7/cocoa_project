@@ -6,7 +6,7 @@ import { PlanEntity } from "../../domain/entities/Plan";
 import { OpcionEntity } from "../../domain/entities/Opcion";
 import { PlanSelector } from "../components/flow/PlanSelector";
 import { FlowProgressIndicator } from "../components/flow/FlowProgressIndicator";
-import DIContainer from "../../di/container";
+import { dataSource } from "../../data/datasources";
 import { PlanMapper } from "../../data/mappers/PlanMapper";
 
 interface SeleccionPlanScreenProps {
@@ -32,9 +32,7 @@ export const SeleccionPlanScreen: React.FC<SeleccionPlanScreenProps> = ({
 
   const loadPlanes = async () => {
     try {
-      const planesData = await DIContainer.localDataSource.getPlanesPorFase(
-        faseSeleccionada
-      );
+      const planesData = await dataSource.getPlanesPorFase(faseSeleccionada);
       const planesEntities = PlanMapper.toDomainList(planesData);
       setPlanes(planesEntities);
 

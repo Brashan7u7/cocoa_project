@@ -1,13 +1,11 @@
 import { ProductoEntity } from "../../domain/entities/Producto";
 import { ProductoRepository } from "../../domain/repositories/ProductoRepository";
-import { LocalDataSource } from "../datasources/LocalDataSource";
+import { dataSource } from "../datasources";
 import { ProductoMapper } from "../mappers/ProductoMapper";
 
 export class ProductoRepositoryImpl implements ProductoRepository {
-  constructor(private dataSource: LocalDataSource) {}
-
   async getAll(): Promise<ProductoEntity[]> {
-    const productos = await this.dataSource.getProductos();
+    const productos = await dataSource.getProductos();
     const allProducts = [
       ...productos.lechones,
       ...productos.engorda,
@@ -17,13 +15,13 @@ export class ProductoRepositoryImpl implements ProductoRepository {
   }
 
   async getById(id: string): Promise<ProductoEntity | null> {
-    const data = await this.dataSource.getProductoById(id);
+    const data = await dataSource.getProductoById(id);
     if (!data) return null;
     return ProductoMapper.toDomain(data);
   }
 
   async getByFase(fase: string): Promise<ProductoEntity[]> {
-    const data = await this.dataSource.getProductosPorFase(fase);
+    const data = await dataSource.getProductosPorFase(fase);
     return ProductoMapper.toDomainList(data);
   }
 }
